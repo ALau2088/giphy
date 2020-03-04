@@ -26,7 +26,9 @@ class App extends Component {
       )
       .then(res => {
         console.log(res);
-        this.setState({ url: res.data.data[0]['embed_url'] });
+        this.setState({
+          url: res.data.data[0]['images']['downsized_large']['url']
+        });
       })
       .catch(err => console.log(err));
   }
