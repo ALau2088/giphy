@@ -1,3 +1,14 @@
+# Giphy: A GIFs search app
+
+## Project Installation
+
+1. Install dependencies
+
+```bash
+$ cd giphy
+$ npm install
+```
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
