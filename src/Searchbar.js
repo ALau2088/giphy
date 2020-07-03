@@ -13,6 +13,28 @@ class Searchbar extends Component {
     this.autoComplete = this.autoComplete.bind(this);
   }
 
+  // static getDerivedStateFromProps(props, state) {
+  //   console.log('line 17', props, state);
+  //   if (props.history !== state.history) {
+  //     state.new = 1;
+  //     state.history = props.history;
+  //     console.log('line 21', state);
+  //     return;
+  //   }
+  // }
+
+  componentDidUpdate(prevProps) {
+    console.log(prevProps);
+    if (this.props.history !== prevProps.history) {
+      this.setState(
+        {
+          history: this.props.history,
+        },
+        () => console.log('line 31', this.state)
+      );
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     console.log('line 18', this.state.keyword);
@@ -54,6 +76,7 @@ class Searchbar extends Component {
     });
   }
   render() {
+    console.log('line 79-render');
     return (
       <form className='mb-3' onSubmit={this.handleSubmit}>
         <div className='input-group'>

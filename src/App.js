@@ -34,7 +34,7 @@ class App extends Component {
             },
             history: [...this.state.history, keyword],
           },
-          () => console.log(this.state.history)
+          () => console.log('line 37', this.state.history)
         );
       })
       .catch((err) => console.log(err));
@@ -61,6 +61,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('line 64-render');
     const img = (
       <img
         src={this.state.result.url}
