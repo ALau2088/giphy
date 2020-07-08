@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-import { YOUR_API_KEY } from './config/config';
+import { YOUR_API_KEY } from '../config/config';
 
 import Searchbar from './Searchbar';
 
@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       result: '',
       trending: [],
-      history: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,16 +25,12 @@ class App extends Component {
       )
       .then((res) => {
         console.log(res);
-        this.setState(
-          {
-            result: {
-              title: res.data.data[0].title,
-              url: res.data.data[0]['images']['original']['url'],
-            },
-            history: [...this.state.history, keyword],
+        this.setState({
+          result: {
+            title: res.data.data[0].title,
+            url: res.data.data[0]['images']['original']['url'],
           },
-          () => console.log('line 37', this.state.history)
-        );
+        });
       })
       .catch((err) => console.log(err));
   }
@@ -77,7 +72,6 @@ class App extends Component {
           <Searchbar
             handleSubmit={this.handleSubmit}
             keyword={this.state.keyword}
-            history={this.state.history}
           />
 
           <div>{this.state.url}</div>

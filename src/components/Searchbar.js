@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import Trie from '../helpers/Trie';
 
 class Searchbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       keyword: '',
+      trie: [], // new Trie
       autoComplete: [],
-      history: this.props.history,
+      history: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,21 +25,12 @@ class Searchbar extends Component {
   //   }
   // }
 
-  componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    if (this.props.history !== prevProps.history) {
-      this.setState(
-        {
-          history: this.props.history,
-        },
-        () => console.log('line 31', this.state)
-      );
-    }
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     console.log('line 18', this.state.keyword);
+    this.setState({
+      history: [...this.state.history, this.state.keyword],
+    });
     this.props.handleSubmit(e, this.state.keyword);
   }
 
